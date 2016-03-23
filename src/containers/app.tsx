@@ -8,6 +8,7 @@ import LoginModal from '../components/login/login-modal';
 import Logo from '../components/logo';
 import Navigator from '../components/navigator';
 import NavigatorItem from '../components/navigator-item';
+import LandingPage from '../containers/landing-page';
 
 interface IAppProps extends React.Props<any> {
   session: any;
@@ -36,14 +37,16 @@ class App extends React.Component<IAppProps, void> {
     const isLoggedIn = token && token !== null && typeof token !== 'undefined';
     const firstName = session.getIn(['user', 'firstName'], '');
     const lastName = session.getIn(['user', 'lastName'], '');
+    
+    let body = null;
+    if (isLoggedIn) {
+      body = <Content isVisible={true}>{children}</Content>;
+    } else {
+      body = <LandingPage />; 
+    }
 
     return (
       <div>
-        <LoginModal
-          onSubmit={ login }
-          isPending={ session.get('isLoading', false) }
-          hasError={ session.get('hasError', false) }
-          isVisible={ !isLoggedIn } />
         <Navigator>
           <NavigatorItem mr>
             <Logo />
@@ -64,9 +67,7 @@ class App extends React.Component<IAppProps, void> {
             </Button>
           </NavigatorItem>
         </Navigator>
-        <Content isVisible={ isLoggedIn }>
-          { children }
-        </Content>
+        {body}
       </div>
     );
   };

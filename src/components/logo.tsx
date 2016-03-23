@@ -1,5 +1,5 @@
 import * as React from 'react';
-const LogoImage = require('../assets/rangleio-logo.svg');
+const LogoImage = require('file!../assets/logo.png');
 
 interface ILogoProps {
   style?: Object;
@@ -9,10 +9,10 @@ const Logo = () => (
   <div className="flex items-center">
     <img style={ styles }
       src={ LogoImage }
-      alt="Rangle.io" />
+      alt="Maker Network" />
   </div>
 );
 
-const styles = { width: 128 };
+const styles = { width: 40, height: 40 };
 
 export default Logo;
