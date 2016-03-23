@@ -16,10 +16,9 @@ class AboutPage extends React.Component<IAboutPageProps, void> {
   render() {
     return (
       <Container size={4} center>
-        <h2 className="caps">About Us</h2>
+        <h2 className="caps">About The Maker Network</h2>
         <p>
-          Rangle.io is a next-generation HTML5 design and development firm
-          dedicated to modern, responsive web and mobile applications.
+          Creating a space for makers to share, collaborate and learn
         </p>
       </Container>
     );

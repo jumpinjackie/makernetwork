@@ -52,7 +52,7 @@ class App extends React.Component<IAppProps, void> {
             <Logo />
           </NavigatorItem>
           <NavigatorItem isVisible={ isLoggedIn } mr>
-            <Link to="/">Counter</Link>
+            <Link to="/">Home</Link>
           </NavigatorItem>
           <NavigatorItem isVisible={ isLoggedIn }>
             <Link to="/about">About Us</Link>
