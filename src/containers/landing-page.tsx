@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/session';
 import LoginForm from '../components/login/login-form';
+import Testimonials from '../components/testimonials';
 
 function mapStateToProps(state) {
   return {
@@ -30,15 +31,9 @@ export default class LandingPage extends React.Component<any, any> {
         </div>
         <div className="md-col md-col-6 p2">
           <h2 className="center">About</h2>
-          <p className="center">As dry as a brizzie no dramas as cunning as a 
-          ford. As busy as a clucky where shazza got us some rage on. Flat out 
-          like a two up no worries lets throw a dunny. cranky mate mad as a 
-          rage on. Shazza got us some cracker to it'll be spag bol. As dry as 
-          a aussie salute no worries as busy as a down under. You little 
-          ripper cleanskin how she'll be right oldies. Shazza got us some 
-          mappa tassie mate lets get some bush oyster. Grab us a cane toad 
-          with lets get some vb. Stands out like a brickie built like a dill.
-          </p>
+          <p className="center">A community for makers to share, 
+          collaborate and learn</p>
+          <Testimonials interval={7000} />
         </div>
         <div className="md-col md-col-6 p2">
           <h2 className="center">Login</h2>

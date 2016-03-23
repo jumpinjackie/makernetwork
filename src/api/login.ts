@@ -5,7 +5,7 @@ const LOGIN_ERR_MSG = `
   The username or password you have entered is invalid.
 `;
 
-export function login(username, password) {
+export function login(username: string, password: string) {
   return new Promise((resolve, reject) => {
     const foundUsers = usersMock.filter((user) => user.Username === username);
 
