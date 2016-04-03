@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { IActivityItem } from '../api/contracts';
+import { IActivityItem, ActivityKind } from '../api/contracts';
 import { fetchActivitiesSince } from '../actions/home';
 
 function mapStateToProps(state) {
@@ -16,11 +16,25 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+const ActivityHeadline = (activity: IActivityItem) => {
+    switch(activity.kind) {
+        case ActivityKind.AvailableTool:
+            return <p className="m0"><strong>{activity.user}</strong> made a tool available</p>;
+        case ActivityKind.PublishedEvent:
+            return <p className="m0"><strong>{activity.user}</strong> published an event</p>;
+        case ActivityKind.PublishedLocation:
+            return <p className="m0"><strong>{activity.user}</strong> published a location</p>;
+        case ActivityKind.UserActivity:
+            return <p className="m0"><strong>{activity.user}</strong> performed an activity</p>;
+    }
+    return <p className="m0">(${activity.kind} ${activity.user})</p>;
+}
+
 const ActivityCard = (props: IActivityItem) => {
   return <div className="flex col-6 sm-col-4 md-col-3 lg-col-2 p2">
     <div className="p1 border rounded">
       <img src="//placehold.it/256" />
-      <p className="m0">({props.kind}) {props.user}</p>
+      <ActivityHeadline {...props} />
       <p className="m0">{props.date}</p>
     </div>
   </div>;
