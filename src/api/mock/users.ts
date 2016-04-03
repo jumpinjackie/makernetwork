@@ -1,14 +1,23 @@
 export default [
   {
-    Username: 'admin',
-    Password: 'superuser'
+    id: 1,
+    Username: 'jng',
+    Password: 'testing',
+    FirstName: "Jackie",
+    LastName: "Ng"
   },
   {
-    Username: 'guest',
-    Password: 'letmein'
+    id: 3,
+    Username: 'kong',
+    Password: 'testing',
+    FirstName: "Ken",
+    LastName: "Ong"
   },
   {
-    Username: 'user',
-    Password: 'pass'
+    id: 2,
+    Username: 'tnguyen',
+    Password: 'testing',
+    FirstName: "Tracey",
+    LastName: "Nguyen"
   }
 ];

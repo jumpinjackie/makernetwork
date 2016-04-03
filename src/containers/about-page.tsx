@@ -12,7 +12,8 @@ function mapDispatchToProps() {
   return {};
 }
 
-class AboutPage extends React.Component<IAboutPageProps, void> {
+@connect(mapStateToProps, mapDispatchToProps)
+export default class AboutPage extends React.Component<IAboutPageProps, void> {
   render() {
     return (
       <Container size={4} center>
@@ -24,8 +25,3 @@ class AboutPage extends React.Component<IAboutPageProps, void> {
     );
   }
 };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AboutPage);

@@ -9,6 +9,7 @@ import Button from '../button';
 import Alert from '../alert';
 
 interface ILoginFormProps {
+  slim?: boolean;
   onSubmit: () => void;
   handleSubmit?: () => void;
   resetForm?: () => void;
@@ -35,42 +36,55 @@ class LoginForm extends React.Component<ILoginFormProps, void> {
       }
     } = this.props;
 
+    let body = null;
+    if (this.props.slim === true) {
+      body = <div>
+        <Input inline={true} type="text" placeholder="Username" fieldDefinition={ username } id="qa-uname-input"/>
+        <Input inline={true} type="password" placeholder="Password" fieldDefinition={ password } id="qa-password-input" />
+        <Button disabled={ isPending } type="submit" className="mr1" id="qa-login-button">
+          { isPending ? "Logging In ..." : "Login" }
+        </Button>
+      </div>;
+    } else {
+      body = <div>
+        <Alert isVisible={ isPending }>Loading...</Alert>
+        <Alert id="qa-alert" isVisible={ hasError } status="error">
+          Invalid username and password
+        </Alert>
+        <FormGroup>
+          <FormLabel id="qa-uname-label">Username</FormLabel>
+          <Input type="text" fieldDefinition={ username } id="qa-uname-input"/>
+          <FormError id="qa-uname-validation"
+            isVisible={ !!(username.touched && username.error) }>
+            { username.error }
+          </FormError>
+        </FormGroup>
+
+        <FormGroup>
+          <FormLabel id="qa-password-label">Password</FormLabel>
+          <Input type="password"
+            fieldDefinition={ password }
+            id="qa-password-input" />
+          <FormError id="qa-password-validation"
+            isVisible={ !!(password.touched && password.error) }>
+            { password.error }
+          </FormError>
+        </FormGroup>
+
+        <FormGroup>
+          <Button type="submit" className="mr1" id="qa-login-button">
+            Login
+          </Button>
+          <Button onClick={ resetForm }
+            type="reset"
+            className="bg-red" id="qa-clear-button">
+            Clear
+          </Button>
+        </FormGroup>
+      </div>;
+    }
     return <Form handleSubmit={ handleSubmit }>
-      <Alert isVisible={ isPending }>Loading...</Alert>
-      <Alert id="qa-alert" isVisible={ hasError } status="error">
-        Invalid username and password
-      </Alert>
-
-      <FormGroup>
-        <FormLabel id="qa-uname-label">Username</FormLabel>
-        <Input type="text" fieldDefinition={ username } id="qa-uname-input"/>
-        <FormError id="qa-uname-validation"
-          isVisible={ !!(username.touched && username.error) }>
-          { username.error }
-        </FormError>
-      </FormGroup>
-
-      <FormGroup>
-        <FormLabel id="qa-password-label">Password</FormLabel>
-        <Input type="password"
-          fieldDefinition={ password }
-          id="qa-password-input" />
-        <FormError id="qa-password-validation"
-          isVisible={ !!(password.touched && password.error) }>
-          { password.error }
-        </FormError>
-      </FormGroup>
-
-      <FormGroup>
-        <Button type="submit" className="mr1" id="qa-login-button">
-          Login
-        </Button>
-        <Button onClick={ resetForm }
-          type="reset"
-          className="bg-red" id="qa-clear-button">
-          Clear
-        </Button>
-      </FormGroup>
+      {body}
     </Form>;
   }
 

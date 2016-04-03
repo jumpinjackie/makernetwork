@@ -12,11 +12,12 @@ const Input = ({
   type = 'text',
   placeholder = '',
   fieldDefinition,
-  id = ''
+  id = '',
+  inline = false
 }) => (
   <input
     id={ id }
-    className="block col-12 mb1 input"
+    className={inline ? "field" : "block col-12 mb1 input"}
     type={ type }
     placeholder={ placeholder }
     { ...fieldDefinition } />

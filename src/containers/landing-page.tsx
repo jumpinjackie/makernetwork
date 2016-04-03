@@ -36,10 +36,8 @@ export default class LandingPage extends React.Component<any, any> {
           <Testimonials interval={7000} />
         </div>
         <div className="md-col md-col-6 p2">
-          <h2 className="center">Login</h2>
-          <LoginForm onSubmit={login} 
-                     hasError={session.get('hasError', false)} 
-                     isPending={session.get('isLoading', false)} />
+          <h2 className="center">Join Us</h2>
+          <p>balgbksajfkdsjfksdjf ksdjkfjdskfjd</p>
         </div>
       </div>
     </main>;

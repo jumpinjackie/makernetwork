@@ -11,8 +11,7 @@ const INITIAL_STATE = fromJS({
     since: null,
     activities: [],
     hasError: false,
-    isLoading: false,
-    debug: ''
+    isLoading: false
 })
 
 const ACTIVITY_DATE_SORT_COMPARATOR = (a: IActivityItem, b: IActivityItem) => {

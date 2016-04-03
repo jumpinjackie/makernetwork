@@ -9,6 +9,7 @@ import Logo from '../components/logo';
 import Navigator from '../components/navigator';
 import NavigatorItem from '../components/navigator-item';
 import LandingPage from '../containers/landing-page';
+import LoginForm from '../components/login/login-form';
 
 interface IAppProps extends React.Props<any> {
   session: any;
@@ -37,6 +38,7 @@ class App extends React.Component<IAppProps, void> {
     const isLoggedIn = token && token !== null && typeof token !== 'undefined';
     const firstName = session.getIn(['user', 'firstName'], '');
     const lastName = session.getIn(['user', 'lastName'], '');
+    const id = session.getIn(['user', 'id'], '');
     
     let body = null;
     if (isLoggedIn) {
@@ -61,8 +63,16 @@ class App extends React.Component<IAppProps, void> {
             <Link to="/about">About Us</Link>
           </NavigatorItem>
           <div className="flex flex-auto"></div>
+          <NavigatorItem isVisible={ !isLoggedIn }>
+            <LoginForm slim={true}
+                       onSubmit={login} 
+                       hasError={session.get('hasError', false)} 
+                       isPending={session.get('isLoading', false)} />
+          </NavigatorItem>
           <NavigatorItem isVisible={ isLoggedIn } mr>
-            <b>{ `${ firstName } ${ lastName }` }</b>
+            <Link to={`/user/${id}`}>
+              <strong>{ `${ firstName } ${ lastName }` }</strong>
+            </Link>
           </NavigatorItem>
           <NavigatorItem isVisible={ isLoggedIn }>
             <Button onClick={ logout } className="bg-red white">

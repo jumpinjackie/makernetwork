@@ -18,8 +18,9 @@ export function login(username: string, password: string) {
       setTimeout(() => resolve({
         token: '1234-5678-9101-1213',
         profile: {
-          firstName: 'Jane',
-          lastName: 'Smith',
+          id: foundUsers[0].id,
+          firstName: foundUsers[0].FirstName,
+          lastName: foundUsers[0].LastName
         },
       }), 750);
     } else {

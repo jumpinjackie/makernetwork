@@ -6,6 +6,7 @@ interface IButtonProps extends React.Props<any> {
   type?: string;
   className?: string;
   id?: string;
+  disabled?: boolean;
 };
 
 function Button({
@@ -13,13 +14,15 @@ function Button({
   type = 'button',
   className = '',
   id = '',
-  children = null
+  children = null,
+  disabled = false
 }: IButtonProps) {
   const buttonClasses = classNames('btn', 'btn-primary', className);
 
   return <button
     id={ id }
     type={ type }
+    disabled={ disabled ? "disabled" : null }
     className={ buttonClasses }
     onClick={ onClick }>
     { children }

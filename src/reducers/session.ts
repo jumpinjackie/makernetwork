@@ -11,7 +11,7 @@ const INITIAL_STATE = fromJS({
   token: null,
   user: {},
   hasError: false,
-  isLoading: false,
+  isLoading: false
 });
 
 function sessionReducer(state = INITIAL_STATE,
