@@ -25,6 +25,11 @@ export enum ActivityKind {
 }
 
 /**
+ * A geographic coordinate
+ */
+export type GeographicCoordinate = { lat: number, lon: number };
+
+/**
  * Denotes an activity stream item
  */
 export interface IActivityItem {
@@ -52,4 +57,8 @@ export interface IActivityItem {
      * A textual description of this item
      */
     description: string;
+    /**
+     * The location of this activity
+     */
+    location?: GeographicCoordinate;
 }

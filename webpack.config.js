@@ -98,6 +98,7 @@ module.exports = {
       loaders.woff,
       loaders.woff2,
       loaders.ttf,
+      loaders.image
     ]
   },
 

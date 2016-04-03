@@ -20,8 +20,13 @@ exports.html = {
 
 exports.css = {
   test: /\.css$/,
-  loader: 'style-loader!css-loader!postcss-loader',
-  exclude: /node_modules/
+  loader: 'style-loader!css-loader!postcss-loader'/*,
+  exclude: /node_modules/ */
+};
+
+exports.image = {
+  test: /\.(png|jpg)$/,
+  loader: "file-loader"
 };
 
 exports.svg = makeUrlLoader(/\.svg$/);

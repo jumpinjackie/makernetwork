@@ -1,5 +1,5 @@
 import * as React from 'react';
-const LogoImage = require('file!../assets/logo.png');
+const LogoImage = require('../assets/logo.png');
 
 interface ILogoProps {
   style?: Object;

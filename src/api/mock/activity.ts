@@ -7,7 +7,11 @@ let activities: IActivityItem[] = [
       "kind" : 2,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Ken Ong"
+      "user" : "Ken Ong",
+      "location": {
+        "lon": 144.96339797973633,
+        "lat": -37.81507298760665
+      }
     },
     {
       "id" : "6673bcbd-a608-40dc-9d08-2b8f1b4f28b3",
@@ -15,7 +19,11 @@ let activities: IActivityItem[] = [
       "kind" : 2,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Jackie Ng"
+      "user" : "Jackie Ng",
+      "location": {
+        "lon": 144.94966506958008,
+        "lat": -37.83148014503288
+      }
     },
     {
       "id" : "489a6bb6-87b6-41a3-969c-9c339c809b68",
@@ -23,7 +31,11 @@ let activities: IActivityItem[] = [
       "kind" : 1,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Tracey Nguyen"
+      "user" : "Tracey Nguyen",
+      "location": {
+        "lon": 144.9656295776367,
+        "lat": -37.81344563270114
+      }
     },
     {
       "id" : "78f83064-f82b-4f74-a739-99481aed1b46",
@@ -31,7 +43,11 @@ let activities: IActivityItem[] = [
       "kind" : 0,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Jackie Ng"
+      "user" : "Jackie Ng",
+      "location": {
+        "lon": 144.9762725830078,
+        "lat": -37.80286695148152
+      }
     },
     {
       "id" : "7f83d98d-8591-434f-a75b-0b1ed5f9dfe6",
@@ -39,7 +55,11 @@ let activities: IActivityItem[] = [
       "kind" : 0,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Tracey Nguyen"
+      "user" : "Tracey Nguyen",
+      "location": {
+        "lon": 145.0366973876953,
+        "lat": -37.83690319650765
+      }
     },
     {
       "id" : "14a52743-3ba6-4701-8057-66d0c7040bea",
@@ -47,7 +67,11 @@ let activities: IActivityItem[] = [
       "kind" : 1,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Tracey Nguyen"
+      "user" : "Tracey Nguyen",
+      "location": {
+        "lon": 145.02090454101562,
+        "lat": -37.74248523826606
+      }
     },
     {
       "id" : "e4d04645-1578-4bf8-b0d0-2c7baf47c85c",
@@ -559,7 +583,11 @@ let activities: IActivityItem[] = [
       "kind" : 2,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Tracey Nguyen"
+      "user" : "Tracey Nguyen",
+      "location": {
+        "lon": 145.01609802246094,
+        "lat": -37.8648255980463
+      }
     },
     {
       "id" : "c4c81945-ce4b-4046-a465-714824b0afd6",
@@ -591,7 +619,11 @@ let activities: IActivityItem[] = [
       "kind" : 2,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Jackie Ng"
+      "user" : "Jackie Ng",
+      "location": {
+        "lon": 144.98485565185547,
+        "lat": -37.77505678240507
+      }
     },
     {
       "id" : "09d3c1e2-4ae9-4e3d-b509-048f496a9ab3",
@@ -607,7 +639,11 @@ let activities: IActivityItem[] = [
       "kind" : 1,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Ken Ong"
+      "user" : "Ken Ong",
+      "location": {
+        "lon": 145.08441925048828,
+        "lat": -37.86157304696477
+      }
     },
     {
       "id" : "14c37c32-3667-4d23-bcfb-1bf27d5a7533",
@@ -639,7 +675,11 @@ let activities: IActivityItem[] = [
       "kind" : 3,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Jackie Ng"
+      "user" : "Jackie Ng",
+      "location": {
+        "lon": 144.86778259277344,
+        "lat": -37.779398571318765
+      }
     },
     {
       "id" : "63064868-bb3a-46ac-a2a2-80e0a82b7d79",
@@ -647,7 +687,11 @@ let activities: IActivityItem[] = [
       "kind" : 1,
       "thumbnail" : "",
       "description" : "",
-      "user" : "Tracey Nguyen"
+      "user" : "Tracey Nguyen",
+      "location": {
+        "lon": 144.88666534423825,
+        "lat": -37.80924146650164
+      }
     },
     {
       "id" : "09362a26-ab75-46d3-9904-e20308f488ce",
