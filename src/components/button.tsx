@@ -22,7 +22,7 @@ function Button({
   return <button
     id={ id }
     type={ type }
-    disabled={ disabled ? "disabled" : null }
+    disabled={ disabled }
     className={ buttonClasses }
     onClick={ onClick }>
     { children }

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/session';
-import LoginForm from '../components/login/login-form';
+import SignUpForm from '../components/signup-form';
 import Testimonials from '../components/testimonials';
 
 function mapStateToProps(state) {
@@ -12,9 +11,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    login: () => dispatch(loginUser())
-  };
+  return {};
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -37,7 +34,8 @@ export default class LandingPage extends React.Component<any, any> {
         </div>
         <div className="md-col md-col-6 p2">
           <h2 className="center">Join Us</h2>
-          <p>balgbksajfkdsjfksdjf ksdjkfjdskfjd</p>
+          <SignUpForm hasError={false} 
+                      isPending={false} />
         </div>
       </div>
     </main>;
