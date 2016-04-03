@@ -15,9 +15,23 @@ const INITIAL_STATE = fromJS({
     debug: ''
 })
 
+const ACTIVITY_DATE_SORT_COMPARATOR = (a: IActivityItem, b: IActivityItem) => {
+    return a.date.localeCompare(b.date);
+}
+
+const INVERTED_ACTIVITY_DATE_SORT_COMPARATOR = (a: IActivityItem, b: IActivityItem) => {
+    let result = ACTIVITY_DATE_SORT_COMPARATOR(a, b);
+    if (result > 0)
+        return -1;
+    else if (result < 0)
+        return 1;
+    else
+        return 0;
+};
+
 function getEarliestDate(activities: IActivityItem[]): string {
     if (activities != null && activities.length > 0) {
-        return activities.sort((a, b) => a.date.localeCompare(b.date))[0].date;
+        return activities.sort(ACTIVITY_DATE_SORT_COMPARATOR)[0].date;
     } else {
         return null;
     }
@@ -30,7 +44,7 @@ function combineActivities(currentActivities: IActivityItem[], newActivities: IA
         //NOTE: Will currently have potential for duplicates as a result of
         //overlapping dates
         let left = List(currentActivities || []);
-        let right = List(newActivities || []);
+        let right = List((newActivities || []).sort(INVERTED_ACTIVITY_DATE_SORT_COMPARATOR));
         return left.concat(right).toList();
     }
 }
@@ -45,7 +59,7 @@ export default function homeReducer(state = INITIAL_STATE, action = { type: '', 
         case HOME_GET_ACTIVITIES_SINCE_SUCCESS:
             let newState = state.merge(fromJS({
                 since: getEarliestDate(action.payload),
-                activities: state.get("activities").mergeDeep(List(action.payload)),
+                activities: combineActivities(state.get("activities"), action.payload),
                 hasError: false,
                 isLoading: false
             }));

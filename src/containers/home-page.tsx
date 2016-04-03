@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as moment from 'moment';
 import { connect } from 'react-redux';
 import { IActivityItem, ActivityKind } from '../api/contracts';
 import { fetchActivitiesSince } from '../actions/home';
@@ -35,7 +36,7 @@ const ActivityCard = (props: IActivityItem) => {
     <div className="p1 border rounded">
       <img src="//placehold.it/256" />
       <ActivityHeadline {...props} />
-      <p className="m0">{props.date}</p>
+      <p className="m0" title={props.date}>{moment.utc(props.date).fromNow()}</p>
     </div>
   </div>;
 };
