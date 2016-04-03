@@ -11,7 +11,7 @@ const INITIAL_STATE = fromJS({
     userInfo: null,
     hasError: false,
     errorMessage: null,
-    isLoading: false
+    isLoading: true
 })
 
 export default function profileReducer(state = INITIAL_STATE, action = { type: '', payload: null }) {
