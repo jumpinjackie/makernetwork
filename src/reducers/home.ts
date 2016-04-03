@@ -23,13 +23,15 @@ function getEarliestDate(activities: IActivityItem[]): string {
     }
 }
 
-function combineActivities(currentActivities: IActivityItem[], newActivities: IActivityItem[]) {
+function combineActivities(currentActivities: IActivityItem[], newActivities: IActivityItem[]): List<IActivityItem> {
     if (currentActivities == null) {
-        return newActivities || [];
+        return List(newActivities || []);
     } else {
         //NOTE: Will currently have potential for duplicates as a result of
         //overlapping dates
-        return currentActivities.concat(newActivities || []);
+        let left = List(currentActivities || []);
+        let right = List(newActivities || []);
+        return left.concat(right).toList();
     }
 }
 
@@ -38,22 +40,20 @@ export default function homeReducer(state = INITIAL_STATE, action = { type: '', 
         case HOME_GET_ACTIVITIES_SINCE_PENDING:
             return state.merge(fromJS({
                 hasError: false,
-                isLoading: true,
-                debug: HOME_GET_ACTIVITIES_SINCE_PENDING
+                isLoading: true
             }));
         case HOME_GET_ACTIVITIES_SINCE_SUCCESS:
-            return state.merge(fromJS({
-                since: getEarliestDate(action.payload.activities),
-                activities: List.of<IActivityItem>(action.payload.activities), //combineActivities(state.activities, action.payload.activities),
+            let newState = state.merge(fromJS({
+                since: getEarliestDate(action.payload),
+                activities: state.get("activities").mergeDeep(List(action.payload)),
                 hasError: false,
-                isLoading: false,
-                debug: HOME_GET_ACTIVITIES_SINCE_SUCCESS
+                isLoading: false
             }));
+            return newState;
         case HOME_GET_ACTIVITIES_SINCE_ERROR:
             return state.merge(fromJS({
                 hasError: true,
-                isLoading: false,
-                debug: HOME_GET_ACTIVITIES_SINCE_ERROR
+                isLoading: false
             }));
         default:
             return state;

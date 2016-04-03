@@ -4,7 +4,6 @@ import { IActivityItem } from '../api/contracts';
 import { fetchActivitiesSince } from '../actions/home';
 
 function mapStateToProps(state) {
-  debugger;
   return {
     session: state.session,
     home: state.home,
@@ -42,7 +41,7 @@ export default class HomePage extends React.Component<any, any> {
     const hasError = home.get("hasError", false);
     return <div className="p2">
       <div className="flex flex-wrap mxn2">
-        {activities.map(act => <ActivityCard {...act}/>)}
+        {activities.map(act => <ActivityCard key={act.id} {...act}/>)}
       </div>
     </div>;
   }
