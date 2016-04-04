@@ -5,14 +5,12 @@ interface ILogoProps {
   style?: Object;
 };
 
-const Logo = () => (
-  <div className="flex items-center">
-    <img style={ styles }
+const Logo = () => <a href="#">Maker Network</a>;
+/*
+(<img style={ styles }
       src={ LogoImage }
-      alt="Maker Network" />
-  </div>
-);
-
+      alt="Maker Network" />);
+*/
 const styles = { width: 40, height: 40 };
 
 export default Logo;

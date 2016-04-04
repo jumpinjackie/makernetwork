@@ -1,3 +1,15 @@
+declare module "react-bootstrap" {
+    import * as React from "react";
+    interface NavbarFormProps extends React.HTMLAttributes {
+    }
+    type NavbarForm = React.ClassicComponent<NavbarHeaderProps, {}>;
+    var NavbarForm: React.ClassicComponentClass<NavbarHeaderProps>;
+    
+    interface NavbarClass extends React.ClassicComponentClass<NavbarProps> {
+        Form: typeof NavbarForm;
+    }
+}
+
 declare module "react-leaflet" {
     import * as React from "react";
     

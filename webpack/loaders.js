@@ -24,21 +24,25 @@ exports.css = {
   exclude: /node_modules/ */
 };
 
+exports.less = {
+  test: /\.less$/,
+  loader: 'style-loader!css-loader!less-loader'
+};
+
 exports.image = {
   test: /\.(png|jpg)$/,
   loader: "file-loader"
 };
 
-exports.svg = makeUrlLoader(/\.svg$/);
-exports.eot = makeUrlLoader(/\.eot$/);
-exports.woff = makeUrlLoader(/\.woff$/);
-exports.woff2 = makeUrlLoader(/\.woff2$/);
-exports.ttf = makeUrlLoader(/\.ttf$/);
+exports.svg = makeUrlLoader(/\.svg(\?v=\d+\.\d+\.\d+)?$/);
+exports.eot = makeUrlLoader(/\.eot(\?v=\d+\.\d+\.\d+)?$/);
+exports.woff = makeUrlLoader(/\.woff(\?v=\d+\.\d+\.\d+)?$/);
+exports.woff2 = makeUrlLoader(/\.woff2(\?v=\d+\.\d+\.\d+)?$/);
+exports.ttf = makeUrlLoader(/\.ttf(\?v=\d+\.\d+\.\d+)?$/);
 
-function makeUrlLoader (pattern) {
+function makeUrlLoader(pattern) {
   return {
     test: pattern,
-    loader: 'url',
-    exclude: /node_modules/
+    loader: 'url'
   };
 }

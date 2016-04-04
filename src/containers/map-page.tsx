@@ -42,7 +42,7 @@ export default class MapPage extends React.Component<any, any> {
     const hasError = map.get("hasError", false);
     let body = null;
     if (isPending) {
-      body = <h1>Loading ...</h1>
+      body = <h1><i className="fa fa-refresh fa-spin" /> Loading ...</h1>
     } else if (hasError) {
       body = <div>
         <h1>An error occurred</h1>
@@ -51,17 +51,19 @@ export default class MapPage extends React.Component<any, any> {
       const activities = map.get("activities", false);
       const center = map.get("center", false);
       const centerPt = { lat: center.get("lat"), lon: center.get("lon") };
-      body = <div className="flex flex-wrap mxn2">
-        <div className="col-3 p1">
+      body = <div className="row">
+        <div className="col-md-3">
           {activities.map(act => <ActivityListItem key={act.id} {...act} />)}
         </div>
-        <Map center={centerPt} zoom={13} className="col-9 flex p1">
-          <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
-          {activities.map(act => <Marker key={act.id} position={act.location}><Popup><ActivityCard {...act} /></Popup></Marker>)}
-        </Map>
+        <div className="col-md-9">
+          <Map center={centerPt} zoom={13}>
+            <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
+            {activities.map(act => <Marker key={act.id} position={act.location}><Popup><ActivityCard {...act} /></Popup></Marker>)}
+          </Map>
+        </div>
       </div>;
     }
-    return <div className="p2">
+    return <div className="container-fluid">
       {body}
     </div>;
   }

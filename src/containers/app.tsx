@@ -2,12 +2,10 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { loginUser, logoutUser } from '../actions/session';
 import { Link } from 'react-router';
-import Button from '../components/button';
-import Content from '../components/content';
-import LoginModal from '../components/login/login-modal';
+import { Navbar, Nav, NavItem, Button, NavDropdown, MenuItem } from 'react-bootstrap';
+import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
+
 import Logo from '../components/logo';
-import Navigator from '../components/navigator';
-import NavigatorItem from '../components/navigator-item';
 import LandingPage from '../containers/landing-page';
 import LoginForm from '../components/login/login-form';
 
@@ -31,7 +29,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-class App extends React.Component<IAppProps, void> {
+@connect(mapStateToProps, mapDispatchToProps)
+export default class App extends React.Component<IAppProps, void> {
   render() {
     const { children, session, login, logout } = this.props;
     const token = session.get('token', false);
@@ -40,53 +39,64 @@ class App extends React.Component<IAppProps, void> {
     const lastName = session.getIn(['user', 'lastName'], '');
     const id = session.getIn(['user', 'id'], '');
     
+    let loggedInMenu = null;
+    let loggedInSection = null;
+    if (isLoggedIn) {
+      loggedInMenu = <Nav>
+        <IndexLinkContainer to="/" activeClassName="active">
+          <NavItem><i className="fa fa-home" /> Home</NavItem>
+        </IndexLinkContainer> 
+        <LinkContainer to="/map" activeClassName="active">
+          <NavItem><i className="fa fa-map" /> Map</NavItem>
+        </LinkContainer> 
+        <LinkContainer to="/about" activeClassName="active">
+          <NavItem><i className="fa fa-info-circle" /> About Us</NavItem>
+        </LinkContainer>
+      </Nav>;
+      loggedInSection = <Nav pullRight>
+        <LinkContainer to={`/user/${id}`} activeClassName="active">
+          <NavItem><i className="fa fa-user" /> { `${ firstName } ${ lastName }` }</NavItem>
+        </LinkContainer>
+        <NavItem onClick={ logout }>
+          <i className="fa fa-power-off" /> Logout
+        </NavItem>
+      </Nav>;
+    } else {
+      loggedInSection = <Nav pullRight>
+        <Navbar.Form pullRight>          
+          <LoginForm slim={true}
+                     onSubmit={login} 
+                     hasError={session.get('hasError', false)} 
+                     isPending={session.get('isLoading', false)} />
+        </Navbar.Form>
+      </Nav>;
+    }
+    
     let body = null;
     if (isLoggedIn) {
-      body = <Content isVisible={true}>{children}</Content>;
+      body = <div className="container-fluid">
+        { children }
+      </div>;
     } else {
-      body = <LandingPage />; 
+      body = <LandingPage />;
     }
 
     return (
       <div>
-        <Navigator>
-          <NavigatorItem mr>
-            <Logo />
-          </NavigatorItem>
-          <NavigatorItem isVisible={ isLoggedIn } mr>
-            <Link to="/">Home</Link>
-          </NavigatorItem>
-          <NavigatorItem isVisible={ isLoggedIn } mr>
-            <Link to="/map">Map</Link>
-          </NavigatorItem>
-          <NavigatorItem isVisible={ isLoggedIn }>
-            <Link to="/about">About Us</Link>
-          </NavigatorItem>
-          <div className="flex flex-auto"></div>
-          <NavigatorItem isVisible={ !isLoggedIn }>
-            <LoginForm slim={true}
-                       onSubmit={login} 
-                       hasError={session.get('hasError', false)} 
-                       isPending={session.get('isLoading', false)} />
-          </NavigatorItem>
-          <NavigatorItem isVisible={ isLoggedIn } mr>
-            <Link to={`/user/${id}`}>
-              <strong>{ `${ firstName } ${ lastName }` }</strong>
-            </Link>
-          </NavigatorItem>
-          <NavigatorItem isVisible={ isLoggedIn }>
-            <Button onClick={ logout } className="bg-red white">
-              Logout
-            </Button>
-          </NavigatorItem>
-        </Navigator>
+        <Navbar inverse fluid>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="#">Maker Network</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            { loggedInMenu }
+            { loggedInSection }
+          </Navbar.Collapse>
+        </Navbar>
         {body}
       </div>
     );
   };
 };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);

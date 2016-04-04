@@ -21,23 +21,27 @@ export default class LandingPage extends React.Component<any, any> {
   }
   render(): JSX.Element {
     const { children, session, login } = this.props;
-    return <main>
-      <div className="clearfix">
-        <div className="col-12">
-          <h1 className="center">Welcome to the Maker Network</h1>
+    return <div className="container-fluid">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="container">
+            <h1 className="text-center">Welcome to the Maker Network</h1>
+          </div>
         </div>
-        <div className="md-col md-col-6 p2">
-          <h2 className="center">About</h2>
-          <p className="center">A community for makers to share, 
+      </div>
+      <div className="row">
+        <div className="col-md-6">
+          <h2 className="text-center">About</h2>
+          <p className="text-center">A community for makers to share, 
           collaborate and learn</p>
           <Testimonials interval={7000} />
         </div>
-        <div className="md-col md-col-6 p2">
-          <h2 className="center">Join Us</h2>
+        <div className="col-md-6">
+          <h2 className="text-center">Join Us</h2>
           <SignUpForm hasError={false} 
                       isPending={false} />
         </div>
       </div>
-    </main>;
+    </div>;
   }
 }

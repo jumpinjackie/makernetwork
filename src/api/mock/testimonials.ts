@@ -1,6 +1,6 @@
-const Landing1 = require('../../assets/landing-1.jpg');
-const Landing2 = require('../../assets/landing-2.jpg');
-const Landing3 = require('../../assets/landing-3.jpg');
+const Landing1 = require('file!../../assets/landing-1.jpg');
+const Landing2 = require('file!../../assets/landing-2.jpg');
+const Landing3 = require('file!../../assets/landing-3.jpg');
 
 export default [
     { title: "Rex Hazard", description: "Rex Hazard is a buccaneering pioneer of setting up and working with communities of creative builders, Hacker spaces, co-working spaces and Makers Spaces across the globe. Deeply dedicated to working within this field, Rex also works as a part of Communitere, an organisation that utilises these open source initiatives to establish creative spaces in disaster zones.", thumbnail: Landing1 },

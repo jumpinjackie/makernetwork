@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Container from '../components/container';
 import { fetchProfile } from '../actions/profile';
 
 function mapStateToProps(state) {
@@ -45,13 +44,14 @@ export default class ProfilePage extends React.Component<any, any> {
       body = <div>
         <h2 className="caps">Profile - {userInfo.get('name')} {isMe ? ' (You)': ''}</h2>
         <p>User profile goes here</p>
+        <p>TODO: Show actitivities by this user</p>
       </div>;
     }
     
     return (
-      <Container size={4} center>
+      <div className="container-fluid">
         {body}
-      </Container>
+      </div>
     );
   }
 };

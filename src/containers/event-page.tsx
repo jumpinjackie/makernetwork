@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import Container from '../components/container';
 import { fetchEvent } from '../actions/event';
 
 function mapStateToProps(state) {
@@ -32,7 +31,7 @@ export default class EventPage extends React.Component<any, any> {
     
     let body = null;
     if (isPending) {
-      body = <h1>Loading Event Details ...</h1>;
+      body = <h1><i className="fa fa-refresh fa-spin" /> Loading Event Details ...</h1>;
     } else if (hasError) {
       const errorMessage = event.get("errorMessage", false);
       body = <div>
@@ -48,9 +47,9 @@ export default class EventPage extends React.Component<any, any> {
     }
     
     return (
-      <Container size={4} center>
+      <div className="container-fluid">
         {body}
-      </Container>
+      </div>
     );
   }
 };

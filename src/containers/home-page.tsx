@@ -56,7 +56,7 @@ export default class HomePage extends React.Component<any, any> {
     const hasError = home.get("hasError", false);
     let body = null;
     if (isPending) {
-      body = <h1>Loading ...</h1>;
+      body = <h1><i className="fa fa-refresh fa-spin" /> Loading ...</h1>;
     } else if (hasError) {
       body = <div>
         <h1>An error occurred</h1>

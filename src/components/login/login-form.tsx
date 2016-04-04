@@ -1,12 +1,6 @@
 import * as React from 'react';
 import * as ReduxForm from 'redux-form';
-import Form from '../form/form';
-import FormGroup from '../form/form-group';
-import FormLabel from '../form/form-label';
-import FormError from '../form/form-error';
-import Input from '../form/input';
-import Button from '../button';
-import Alert from '../alert';
+import { Input, Button, Alert, ButtonGroup } from 'react-bootstrap';
 
 interface ILoginFormProps {
   slim?: boolean;
@@ -39,53 +33,46 @@ class LoginForm extends React.Component<ILoginFormProps, void> {
     let body = null;
     if (this.props.slim === true) {
       body = <div>
-        <Input inline={true} type="text" placeholder="Username" fieldDefinition={ username } id="qa-uname-input"/>
-        <Input inline={true} type="password" placeholder="Password" fieldDefinition={ password } id="qa-password-input" />
-        <Button disabled={ isPending } type="submit" className="mr1" id="qa-login-button">
+        <input type="text" className="form-control" placeholder="Username" {...username} />
+        <input type="password" className="form-control" placeholder="Password" {...password} />
+        <Button disabled={ isPending } type="submit" bsStyle="primary">
           { isPending ? "Logging In ..." : "Login" }
         </Button>
       </div>;
     } else {
+      let aLoading = null;
+      if (isPending) {
+        aLoading = <Alert bsStyle="info"><i className="fa fa-refresh fa-spin" /> Logging In ...</Alert>;
+      }
+      let aError = null;
+      if (hasError) {
+        aError = <Alert bsStyle="danger"><strong><i className="fa fa-exclamation-circle" /> Invalid username and/or password</strong></Alert>;
+      }
+      let vUsername = null;
+      if (!!(username.touched && username.error)) {
+        vUsername = <Alert bsStyle="danger"><strong><i className="fa fa-exclamation-circle" /> {username.error}</strong></Alert>;
+      }
+      let vPassword = null;
+      if (!!(password.touched && password.error)) {
+        vPassword = <Alert bsStyle="danger"><strong><i className="fa fa-exclamation-circle" /> {password.error}</strong></Alert>;
+      }
+      
       body = <div>
-        <Alert isVisible={ isPending }>Loading...</Alert>
-        <Alert id="qa-alert" isVisible={ hasError } status="error">
-          Invalid username and password
-        </Alert>
-        <FormGroup>
-          <FormLabel id="qa-uname-label">Username</FormLabel>
-          <Input type="text" fieldDefinition={ username } id="qa-uname-input"/>
-          <FormError id="qa-uname-validation"
-            isVisible={ !!(username.touched && username.error) }>
-            { username.error }
-          </FormError>
-        </FormGroup>
-
-        <FormGroup>
-          <FormLabel id="qa-password-label">Password</FormLabel>
-          <Input type="password"
-            fieldDefinition={ password }
-            id="qa-password-input" />
-          <FormError id="qa-password-validation"
-            isVisible={ !!(password.touched && password.error) }>
-            { password.error }
-          </FormError>
-        </FormGroup>
-
-        <FormGroup>
-          <Button type="submit" className="mr1" id="qa-login-button">
-            Login
-          </Button>
-          <Button onClick={ resetForm }
-            type="reset"
-            className="bg-red" id="qa-clear-button">
-            Clear
-          </Button>
-        </FormGroup>
+        {aLoading}
+        {aError}
+        <Input type="text" label="Username" placeholder="Username" {...username} />
+        {vUsername}
+        <Input type="password" label="Password" placeholder="Password" {...password} />
+        {vPassword}
+        <ButtonGroup>
+          <Button type="submit" bsStyle="primary">Login</Button>
+          <Button onClick={ resetForm } bsStyle="danger">Clear</Button>
+        </ButtonGroup>
       </div>;
     }
-    return <Form handleSubmit={ handleSubmit }>
+    return <form onSubmit={ handleSubmit }>
       {body}
-    </Form>;
+    </form>;
   }
 
   static validate(values) {
