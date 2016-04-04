@@ -47,6 +47,10 @@ let activities: IActivityItem[] = [
       "location": {
         "lon": 144.9762725830078,
         "lat": -37.80286695148152
+      },
+      "event": {
+        "id": 1,
+        "name": "RHoK Hackathon"
       }
     },
     {
@@ -59,6 +63,10 @@ let activities: IActivityItem[] = [
       "location": {
         "lon": 145.0366973876953,
         "lat": -37.83690319650765
+      },
+      "event": {
+        "id": 3,
+        "name": "Makers event"
       }
     },
     {
@@ -103,7 +111,11 @@ let activities: IActivityItem[] = [
       "kind" : 0,
       "thumbnail" : "",
       "description" : "",
-      "user": { "name": "Tracey Nguyen", "id": 2 }
+      "user": { "name": "Tracey Nguyen", "id": 2 },
+      "event": {
+        "id": 4,
+        "name": "Makers workshop"
+      }
     },
     {
       "id" : "476cea8a-e141-4626-abe0-088d65c028b9",
@@ -143,7 +155,11 @@ let activities: IActivityItem[] = [
       "kind" : 0,
       "thumbnail" : "",
       "description" : "",
-      "user": { "name": "Ken Ong", "id": 3 }
+      "user": { "name": "Ken Ong", "id": 3 },
+      "event": {
+        "id": 2,
+        name
+      }
     },
     {
       "id" : "c38b31da-d09a-4334-9b26-5ec5dae5c328",

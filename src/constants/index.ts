@@ -14,5 +14,9 @@ export const PROFILE_LOAD_PENDING = 'Profile/PROFILE_LOAD_PENDING';
 export const PROFILE_LOAD_SUCCESS = 'Profile/PROFILE_LOAD_SUCCESS';
 export const PROFILE_LOAD_ERROR = 'Profile/PROFILE_LOAD_ERROR';
 
+export const EVENT_LOAD_PENDING = 'Event/EVENT_LOAD_PENDING';
+export const EVENT_LOAD_SUCCESS = 'Event/EVENT_LOAD_SUCCESS';
+export const EVENT_LOAD_ERROR = 'Event/EVENT_LOAD_ERROR';
+
 export const LOGOUT_USER = 'App/LOGOUT_USER';
 export const FORM_RESET = 'redux-form/RESET';

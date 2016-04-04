@@ -5,6 +5,7 @@ import session from './session';
 import home from './home';
 import map from './map';
 import profile from './profile';
+import event from './event';
 
 const rootReducer = combineReducers({
   home,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   routing: routerReducer,
   form: formReducer,
   map,
-  profile
+  profile,
+  event
 });
 
 

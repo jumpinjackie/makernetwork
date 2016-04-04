@@ -3,6 +3,15 @@ export interface IUserInfo {
     id: any;
 }
 
+export interface IEventInfo {
+    id: any;
+    name: string;
+}
+
+export interface IEventDetails extends IEventInfo {
+    
+}
+
 /**
  * Denotes the kind of activity stream items
  */
@@ -62,4 +71,8 @@ export interface IActivityItem {
      * The location of this activity
      */
     location?: GeographicCoordinate;
+    /**
+     * If the activity kind is an event, the summary of the event
+     */
+    event?: IEventInfo;
 }
