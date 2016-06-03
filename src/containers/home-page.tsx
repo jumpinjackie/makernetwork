@@ -41,7 +41,11 @@ export default class HomePage extends React.Component<any, any> {
     } else {
       const activities = home.get("activities", false);
       body = <div className="flex flex-wrap mxn2">
-        {activities.map(act => <ActivityCard key={act.id} activity={act}/>)}
+        {activities.map((act, i) => {
+          return <div className="col-md-4">
+            <ActivityCard key={act.id} activity={act}/>
+          </div>; 
+        })}
       </div>;
     }
     
