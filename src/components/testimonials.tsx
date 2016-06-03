@@ -39,7 +39,9 @@ export default class Testimonials extends React.Component<ITestimonialsProps, IT
         let part = testimonialsMock[this.state.pos];
         
         return <div className="p1 rounded">
-            <img width={320} height={320} className="block mx-auto" src={part.thumbnail} />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <img width={320} height={320} className="block mx-auto" src={part.thumbnail} />
+            </div>
             <h4 className="text-center">{part.title}</h4>
             <p className="text-center">{part.description}</p>
         </div>;

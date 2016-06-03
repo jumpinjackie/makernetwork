@@ -98,7 +98,6 @@ module.exports = {
       loaders.css,
       loaders.less,
       loaders.svg,
-      loaders.image,
       loaders.eot,
       loaders.woff,
       loaders.woff2,
