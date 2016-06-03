@@ -14,20 +14,21 @@ const INITIAL_STATE = fromJS({
     isLoading: false,
     center: { lat: -37.813581246980014, lon: 144.96339797973633 },
     debug: ''
-})
+});
 
 const ACTIVITY_DATE_SORT_COMPARATOR = (a: IActivityItem, b: IActivityItem) => {
     return a.date.localeCompare(b.date);
-}
+};
 
 const INVERTED_ACTIVITY_DATE_SORT_COMPARATOR = (a: IActivityItem, b: IActivityItem) => {
     let result = ACTIVITY_DATE_SORT_COMPARATOR(a, b);
-    if (result > 0)
+    if (result > 0) {
         return -1;
-    else if (result < 0)
+    } else if (result < 0) {
         return 1;
-    else
+    } else {
         return 0;
+    }
 };
 
 function getEarliestDate(activities: IActivityItem[]): string {

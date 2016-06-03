@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReduxForm from 'redux-form';
-import { Alert, Input, ButtonGroup, Button } from 'react-bootstrap';
+import { Alert, FormControl, ControlLabel, ButtonGroup, Button } from 'react-bootstrap';
 
 interface ISignUpFormProps {
   slim?: boolean;
@@ -35,37 +35,39 @@ class SignUpForm extends React.Component<ISignUpFormProps, void> {
     let aProgress = null;
     let aError = null;
     if (isPending) {
-      aProgress = <Alert bsStyle="info"><i className="fa fa-refresh" /> Signing up ...</Alert>
+      aProgress = <Alert bsStyle="info"><i className="fa fa-refresh" /> Signing up ...</Alert>;
     }
     if (hasError) {
-      aError = <Alert bsStyle="danger"><i className="fa fa-exclamation-circle" /> An error occurred signing up</Alert>
+      aError = <Alert bsStyle="danger"><i className="fa fa-exclamation-circle" /> An error occurred signing up</Alert>;
     }
     
     let vFirstName = null;
     if (!!(firstname.touched && firstname.error)) {
-      vFirstName = <Alert bsStyle="danger"><i className="fa fa-exclamation-circle" /> {firstname.error}</Alert>
+      vFirstName = <Alert bsStyle="danger"><i className="fa fa-exclamation-circle" /> {firstname.error}</Alert>;
     }
     let vLastName = null;
     if (!!(lastname.touched && lastname.error)) {
-      vLastName = <Alert bsStyle="danger"><i className="fa fa-exclamation-circle" /> {lastname.error}</Alert>
+      vLastName = <Alert bsStyle="danger"><i className="fa fa-exclamation-circle" /> {lastname.error}</Alert>;
     }
     let vEmail = null;
     if (!!(email.touched && email.error)) {
-      vEmail = <Alert bsStyle="danger"><i className="fa fa-exclamation-circle" /> {email.error}</Alert>
+      vEmail = <Alert bsStyle="danger"><i className="fa fa-exclamation-circle" /> {email.error}</Alert>;
     }
     
     return <form onSubmit={ handleSubmit }>
       
         {aProgress}
         {aError}
-        
-        <Input type="text" label="First Name" placeholder="First Name" />
+        <ControlLabel>First Name</ControlLabel>
+        <FormControl type="text" placeholder="First Name" />
         {vFirstName}
-        <Input type="text" label="Last Name" placeholder="Last Name" />
+        <ControlLabel>Last Name</ControlLabel>
+        <FormControl type="text" placeholder="Last Name" />
         {vLastName}
-        <Input type="email" label="Email Address" placeholder="Email" />
+        <ControlLabel>Email Address</ControlLabel>
+        <FormControl type="email" placeholder="Email" />
         {vEmail}
-        
+        <br />
         <ButtonGroup>
           <Button type="submit" bsStyle="primary">Register</Button>
           <Button onClick={ resetForm } bsStyle="danger">Clear</Button>

@@ -26,7 +26,7 @@ const ActivityListItem = (props: IActivityItem) => {
     <ActivityHeadline {...props} />
     <p className="m0" title={props.date}>{moment.utc(props.date).fromNow()}</p>
   </div>;
-}
+};
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class MapPage extends React.Component<any, any> {
@@ -42,7 +42,7 @@ export default class MapPage extends React.Component<any, any> {
     const hasError = map.get("hasError", false);
     let body = null;
     if (isPending) {
-      body = <h1><i className="fa fa-refresh fa-spin" /> Loading ...</h1>
+      body = <h1><i className="fa fa-refresh fa-spin" /> Loading ...</h1>;
     } else if (hasError) {
       body = <div>
         <h1>An error occurred</h1>

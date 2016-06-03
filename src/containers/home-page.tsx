@@ -19,7 +19,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export const ActivityHeadline = (activity: IActivityItem) => {
-    switch(activity.kind) {
+    switch (activity.kind) {
         case ActivityKind.AvailableTool:
             return <p className="m0"><Link to={`/user/${activity.user.id}`}><strong>{activity.user.name}</strong></Link> made a tool available</p>;
         case ActivityKind.PublishedEvent:
@@ -30,7 +30,7 @@ export const ActivityHeadline = (activity: IActivityItem) => {
             return <p className="m0"><Link to={`/user/${activity.user.id}`}><strong>{activity.user.name}</strong></Link> performed an activity</p>;
     }
     return <p className="m0">(${activity.kind})<Link to={`/user/${activity.user.id}`}><strong>{activity.user.name}</strong></Link></p>;
-}
+};
 
 export const ActivityCard = (props: IActivityItem) => {
   return <div className="flex col-6 sm-col-4 md-col-3 lg-col-2 p2">

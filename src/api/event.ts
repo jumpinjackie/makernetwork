@@ -3,8 +3,8 @@ import mockEvents from './mock/events';
 
 export function getEventDetails(id: number) {
     return new Promise<IEventDetails>((resolve, reject) => {
-        const events = mockEvents.filter(e => e.id == id);
-        if (events.length == 1) {
+        const events = mockEvents.filter(e => e.id === id);
+        if (events.length === 1) {
             let ret: IEventDetails = {
                 id: id,
                 name: events[0].name

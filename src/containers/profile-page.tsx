@@ -12,7 +12,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchProfile: (id) => dispatch(fetchProfile(id))
+    fetchProfile: (id: number) => dispatch(fetchProfile(id))
   };
 }
 
@@ -22,7 +22,7 @@ export default class ProfilePage extends React.Component<any, any> {
     super(props);
   }
   componentDidMount() {
-    this.props.fetchProfile(this.props.routeParams.id);
+    this.props.fetchProfile(parseInt(this.props.routeParams.id, 10));
   }
   render() {
     const { children, session, profile, router } = this.props;
@@ -40,9 +40,9 @@ export default class ProfilePage extends React.Component<any, any> {
       </div>;
     } else {
       const userInfo = profile.get("userInfo", false);
-      const isMe = userInfo.get("id") == session.getIn(['user', 'id'], '');
+      const isMe = userInfo.get("id") === session.getIn(['user', 'id'], '');
       body = <div>
-        <h2 className="caps">Profile - {userInfo.get('name')} {isMe ? ' (You)': ''}</h2>
+        <h2 className="caps">Profile - {userInfo.get('name')} {isMe ? ' (You)' : ''}</h2>
         <p>User profile goes here</p>
         <p>TODO: Show actitivities by this user</p>
       </div>;

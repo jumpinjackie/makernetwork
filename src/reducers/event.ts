@@ -12,7 +12,7 @@ const INITIAL_STATE = fromJS({
     hasError: false,
     errorMessage: null,
     isLoading: true
-})
+});
 
 export default function eventReducer(state = INITIAL_STATE, action = { type: '', payload: null }) {
     switch (action.type) {

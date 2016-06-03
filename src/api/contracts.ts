@@ -54,7 +54,7 @@ export interface IActivityItem {
     /**
      * The kind of activity
      */
-    kind: ActivityKind,
+    kind: ActivityKind;
     /**
      * The user this activity item relates to
      */

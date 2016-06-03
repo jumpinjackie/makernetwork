@@ -8,6 +8,10 @@ declare module "react-bootstrap" {
     interface NavbarClass extends React.ClassicComponentClass<NavbarProps> {
         Form: typeof NavbarForm;
     }
+
+    class FormControl extends React.Component<any, any> { }
+
+    class ControlLabel extends React.Component<any, any> { }
 }
 
 declare module "react-leaflet" {
