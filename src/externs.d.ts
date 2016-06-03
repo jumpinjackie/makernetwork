@@ -14,6 +14,14 @@ declare module "react-bootstrap" {
     class ControlLabel extends React.Component<any, any> { }
 }
 
+declare module "react-split-pane" {
+    import * as React from 'react';
+
+    class SplitPane extends React.Component<any, any> { }
+
+    export = SplitPane;
+}
+
 declare module "react-leaflet" {
     import * as React from "react";
     
@@ -65,4 +73,12 @@ declare module "react-leaflet" {
     class TileLayer extends React.Component<ITileLayerProps, any> {
         
     }
+}
+
+declare module 'react-virtualized' {
+    import * as React from 'react';
+    
+    class AutoSizer extends React.Component<any, any> { }
+
+    class VirtualScroll extends React.Component<any, any> { }
 }
