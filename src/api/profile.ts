@@ -7,6 +7,7 @@ export function getUserProfile(id: number) {
         if (users.length === 1) {
             let ret: IUserInfo = {
                 id: id,
+                firstName: `${users[0].FirstName}`,
                 name: `${users[0].FirstName} ${users[0].LastName}`
             };
             setTimeout(() => resolve(ret), 1500 /* Simulate some delay */);

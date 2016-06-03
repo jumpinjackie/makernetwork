@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import { IActivityItem, ActivityKind } from '../api/contracts';
 import { fetchActivitiesSince } from '../actions/map';
-import { ActivityCard, ActivityHeadline } from './home-page';
+import ActivityCard from '../components/activity-card';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -23,8 +23,7 @@ function mapDispatchToProps(dispatch) {
 
 const ActivityListItem = (props: IActivityItem) => {
   return <div className="m1 p1 border rounded">
-    <ActivityHeadline {...props} />
-    <p className="m0" title={props.date}>{moment.utc(props.date).fromNow()}</p>
+    <ActivityCard activity={props} slim={true} />
   </div>;
 };
 
@@ -58,7 +57,7 @@ export default class MapPage extends React.Component<any, any> {
         <div className="col-md-9">
           <Map center={centerPt} zoom={13}>
             <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
-            {activities.map(act => <Marker key={act.id} position={act.location}><Popup><ActivityCard {...act} /></Popup></Marker>)}
+            {activities.map(act => <Marker key={act.id} position={act.location}><Popup><ActivityCard activity={act} /></Popup></Marker>)}
           </Map>
         </div>
       </div>;

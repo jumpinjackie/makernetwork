@@ -31,7 +31,7 @@ export default class ProfilePage extends React.Component<any, any> {
     
     let body = null;
     if (isPending) {
-      body = <h1>Loading ...</h1>;
+      body = <h1><i className="fa fa-refresh fa-spin" /> Loading ...</h1>;
     } else if (hasError) {
       const errorMessage = profile.get("errorMessage", false);
       body = <div>
@@ -44,7 +44,7 @@ export default class ProfilePage extends React.Component<any, any> {
       body = <div>
         <h2 className="caps">Profile - {userInfo.get('name')} {isMe ? ' (You)' : ''}</h2>
         <p>User profile goes here</p>
-        <p>TODO: Show actitivities by this user</p>
+        <p>TODO: Show activities by this user</p>
       </div>;
     }
     

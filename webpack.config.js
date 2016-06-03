@@ -61,6 +61,8 @@ module.exports = {
       'redux-logger',
       'react-router',
       'react-router-redux',
+      'react-leaflet',
+      'react-virtualized'
     ]
   },
 

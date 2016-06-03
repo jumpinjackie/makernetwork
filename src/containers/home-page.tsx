@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { IActivityItem, ActivityKind } from '../api/contracts';
 import { fetchActivitiesSince } from '../actions/home';
+import ActivityCard from '../components/activity-card';
 
 function mapStateToProps(state) {
   return {
@@ -17,30 +18,6 @@ function mapDispatchToProps(dispatch) {
     fetchActivitiesSince: () => dispatch(fetchActivitiesSince())
   };
 }
-
-export const ActivityHeadline = (activity: IActivityItem) => {
-    switch (activity.kind) {
-        case ActivityKind.AvailableTool:
-            return <p className="m0"><Link to={`/user/${activity.user.id}`}><strong>{activity.user.name}</strong></Link> made a tool available</p>;
-        case ActivityKind.PublishedEvent:
-            return <p className="m0"><Link to={`/user/${activity.user.id}`}><strong>{activity.user.name}</strong></Link> published an event</p>;
-        case ActivityKind.PublishedLocation:
-            return <p className="m0"><Link to={`/user/${activity.user.id}`}><strong>{activity.user.name}</strong></Link> published a location</p>;
-        case ActivityKind.UserActivity:
-            return <p className="m0"><Link to={`/user/${activity.user.id}`}><strong>{activity.user.name}</strong></Link> performed an activity</p>;
-    }
-    return <p className="m0">(${activity.kind})<Link to={`/user/${activity.user.id}`}><strong>{activity.user.name}</strong></Link></p>;
-};
-
-export const ActivityCard = (props: IActivityItem) => {
-  return <div className="flex col-6 sm-col-4 md-col-3 lg-col-2 p2">
-    <div className="p1 border rounded">
-      <img src="//placehold.it/256" />
-      <ActivityHeadline {...props} />
-      <p className="m0" title={props.date}>{moment.utc(props.date).fromNow()}</p>
-    </div>
-  </div>;
-};
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class HomePage extends React.Component<any, any> {
@@ -64,7 +41,7 @@ export default class HomePage extends React.Component<any, any> {
     } else {
       const activities = home.get("activities", false);
       body = <div className="flex flex-wrap mxn2">
-        {activities.map(act => <ActivityCard key={act.id} {...act}/>)}
+        {activities.map(act => <ActivityCard key={act.id} activity={act}/>)}
       </div>;
     }
     
