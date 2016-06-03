@@ -54,8 +54,7 @@ class SignUpForm extends React.Component<ISignUpFormProps, void> {
       vEmail = <Alert bsStyle="danger"><i className="fa fa-exclamation-circle" /> {email.error}</Alert>;
     }
     
-    return <form onSubmit={ handleSubmit }>
-      
+    return <form onSubmit={handleSubmit}>
         {aProgress}
         {aError}
         <ControlLabel>First Name</ControlLabel>
@@ -69,16 +68,15 @@ class SignUpForm extends React.Component<ISignUpFormProps, void> {
         {vEmail}
         <br />
         <ButtonGroup>
-          <Button type="submit" bsStyle="primary">Register</Button>
-          <Button onClick={ resetForm } bsStyle="danger">Clear</Button>
+          <Button bsSize="large" type="submit" bsStyle="primary">Register</Button>
+          <Button bsSize="large" onClick={resetForm} bsStyle="danger">Clear</Button>
         </ButtonGroup>
-
-        <p>Or sign up with ...</p>
         <hr />
+        <p>Or sign up with ...</p>
         <ButtonGroup>
-          <Button bsStyle="primary"><i className="fa fa-facebook" /> Facebook</Button>
-          <Button bsStyle="primary"><i className="fa fa-twitter" /> Twitter</Button>
-          <Button bsStyle="primary"><i className="fa fa-linkedin" /> LinkedIn</Button>
+          <Button bsSize="large" bsStyle="primary"><i className="fa fa-facebook" /> Facebook</Button>
+          <Button bsSize="large" bsStyle="primary"><i className="fa fa-twitter" /> Twitter</Button>
+          <Button bsSize="large" bsStyle="primary"><i className="fa fa-linkedin" /> LinkedIn</Button>
         </ButtonGroup>
     </form>;
   }
